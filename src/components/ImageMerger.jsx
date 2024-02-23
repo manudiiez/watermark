@@ -1,9 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { fabric } from 'fabric';
 
 const ImageMerger = ({ uploadedImageUrl, templateImageUrl, canvasWidth, canvasHeight }) => {
     const canvasRef = useRef(null);
-    const [text, setText] = useState('');
 
 
     useEffect(() => {
@@ -74,16 +73,10 @@ const ImageMerger = ({ uploadedImageUrl, templateImageUrl, canvasWidth, canvasHe
         document.body.removeChild(link);
     };
 
-    const handleTextChange = (event) => {
-        setText(event.target.value);
-    };
-
 
     return (
         <div>
-            <canvas ref={canvasRef} />
-            <input type="text" value={text} onChange={handleTextChange} placeholder="Enter text here" />
-
+            <canvas ref={canvasRef} style={{ visibility: 'hidden' }} />
             <button onClick={downloadMergedImage}>Descargar Imagen</button>
         </div>
     );
