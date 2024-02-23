@@ -2,7 +2,8 @@ import React, { useRef, useEffect } from 'react';
 import { fabric } from 'fabric';
 import DownloadButton from './DownloadButton';
 import AddTextButton from './AddTextButton';
-import ImageUploader2 from './ImageUploader2';
+import ImageUploader from './ImageUploader';
+import styled from 'styled-components';
 
 function Canvas({ initialImageSrc }) {
     const canvasRef = useRef(null);
@@ -25,20 +26,30 @@ function Canvas({ initialImageSrc }) {
             canvas.add(img);
             canvas.renderAll();
         });
-
         // Limpieza al desmontar el componente
         return () => canvasRef.current && canvasRef.current.dispose();
     }, [initialImageSrc]);
 
     return (
-        <div>
-            <canvas id="my-fabric-canvas" width="600" height="400" />
-            <AddTextButton canvasRef={canvasRef} />
-            <DownloadButton canvasRef={canvasRef} />
-            <ImageUploader2 canvasRef={canvasRef} />
+        <Container>
+            <div>
+                <AddTextButton canvasRef={canvasRef} />
+                <DownloadButton canvasRef={canvasRef} />
+                <ImageUploader canvasRef={canvasRef} />
+                <canvas id="my-fabric-canvas" style={{ visibility: 'hidden' }} />
+            </div>
 
-        </div>
+        </Container>
     );
 }
 
 export default Canvas;
+
+const Container = styled.div`
+padding: 5rem 2rem;
+#my-fabric-canvas {
+  width: 100%;
+  height: auto;
+  max-width: 1080px; /* Máximo tamaño visual */
+}
+`;
