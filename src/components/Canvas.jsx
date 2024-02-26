@@ -36,7 +36,8 @@ function Canvas({ initialImageSrc }) {
                 <AddTextButton canvasRef={canvasRef} />
                 <DownloadButton canvasRef={canvasRef} />
                 <ImageUploader canvasRef={canvasRef} />
-                <canvas id="my-fabric-canvas" style={{ visibility: 'hidden' }} />
+                <canvas id="my-fabric-canvas" />
+                {/* <canvas id="my-fabric-canvas" style={{ visibility: 'hidden' }} /> */}
             </div>
 
         </Container>

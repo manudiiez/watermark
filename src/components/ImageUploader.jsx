@@ -2,8 +2,11 @@ function ImageUploader({ canvasRef }) {
 
     const addImageToCanvas = (imgSrc) => {
         const canvas = canvasRef.current;
+        const objects = canvas.getObjects();
+        if (objects.length === 2) {
+            canvas.remove(objects[0]);
+        }
         fabric.Image.fromURL(imgSrc, (newImg) => {
-            // Asumiendo que la primera imagen (la existente) es la imagen de fondo
             const backgroundImage = canvas.backgroundImage;
             let scaleRatio = 1;
 
