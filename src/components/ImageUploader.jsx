@@ -3,6 +3,7 @@ function ImageUploader({ canvasRef }) {
     const addImageToCanvas = (imgSrc) => {
         const canvas = canvasRef.current;
         const objects = canvas.getObjects();
+        console.log(objects);
         if (objects.length === 2) {
             canvas.remove(objects[0]);
         }

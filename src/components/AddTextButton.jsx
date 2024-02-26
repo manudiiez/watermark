@@ -1,5 +1,3 @@
-import styled from "styled-components";
-
 function AddTextButton({ canvasRef }) {
 
     const handleSubmit = (e) => {
@@ -36,7 +34,7 @@ function AddTextButton({ canvasRef }) {
 
 
     return (
-        <Form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <div>
                 <p>Condicion</p>
                 <input type="text" placeholder="Ej. ALQUILER" name="condition" required />
@@ -71,16 +69,9 @@ function AddTextButton({ canvasRef }) {
             </div>
             <button type="submit">Añadir Texto al Canvas</button>
 
-        </Form>
+        </form>
     );
 }
 {/* <button onClick={() => addTextToCanvas("Hello, world!")}>Añadir Texto al Canvas</button> */ }
 
 export default AddTextButton;
-
-
-const Form = styled.form`
-    
-
-
-`
