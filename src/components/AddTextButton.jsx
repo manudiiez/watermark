@@ -75,7 +75,6 @@ function AddTextButton({ canvasRef }) {
         </Container>
     );
 }
-{/* <button onClick={() => addTextToCanvas("Hello, world!")}>Añadir Texto al Canvas</button> */ }
 
 export default AddTextButton;
 

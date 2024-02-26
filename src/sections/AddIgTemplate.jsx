@@ -81,7 +81,7 @@ const AddIgTemplate = () => {
                 </div>
                 <div>
                     <p>Imagenes</p>
-                    <input type="file" name='images' onChange={imageInputFileSelected} />
+                    <input type="file" name='images' multiple onChange={imageInputFileSelected} />
                 </div>
                 <button>Descargar</button>
             </form>

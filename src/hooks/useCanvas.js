@@ -4,7 +4,6 @@ import { fabric } from 'fabric';
 export const useCanvas = () => {
     const canvasRef = useRef(null);
     const [images, setImages] = useState([]);
-    const [formFields, setFormFields] = useState([]);
 
     const initialCanvas = (id, initialImageSrc) => {
         fabric.Image.fromURL(initialImageSrc, (img) => {
@@ -74,16 +73,30 @@ export const useCanvas = () => {
         });
     };
 
+    // const imageInputFileSelected = (e) => {
+    //     const file = e.target.files[0];
+    //     if (file && file.type.match('image.*')) {
+    //         const reader = new FileReader();
+    //         reader.onload = function (evt) {
+    //             const imgSrc = evt.target.result;
+    //             setImages([...images, imgSrc]);
+    //         };
+    //         reader.readAsDataURL(file);
+    //     }
+    // }
     const imageInputFileSelected = (e) => {
-        const file = e.target.files[0];
-        if (file && file.type.match('image.*')) {
-            const reader = new FileReader();
-            reader.onload = function (evt) {
-                const imgSrc = evt.target.result;
-                setImages([...images, imgSrc]);
-            };
-            reader.readAsDataURL(file);
-        }
+        const files = e.target.files;
+        console.log(typeof files);
+        Array.from(files).map(file => {
+            if (file && file.type.match('image.*')) {
+                const reader = new FileReader();
+                reader.onload = function (evt) {
+                    const imgSrc = evt.target.result;
+                    setImages(prev => [...prev, imgSrc])
+                };
+                reader.readAsDataURL(file);
+            }
+        })
     }
 
     const dowloadImage = () => {
