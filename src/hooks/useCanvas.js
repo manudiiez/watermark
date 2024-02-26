@@ -4,6 +4,7 @@ import { fabric } from 'fabric';
 export const useCanvas = () => {
     const canvasRef = useRef(null);
     const [images, setImages] = useState([]);
+    const [formFields, setFormFields] = useState([]);
 
     const initialCanvas = (id, initialImageSrc) => {
         fabric.Image.fromURL(initialImageSrc, (img) => {
@@ -66,6 +67,10 @@ export const useCanvas = () => {
             canvas.add(newImg);
             canvas.sendToBack(newImg);
             canvas.renderAll();
+            dowloadImage()
+            const objects = canvas.getObjects()
+            canvas.remove(objects[0])
+            canvas.renderAll();
         });
     };
 
@@ -75,13 +80,21 @@ export const useCanvas = () => {
             const reader = new FileReader();
             reader.onload = function (evt) {
                 const imgSrc = evt.target.result;
-                console.log(imgSrc);
-                setImages(imgSrc);
+                setImages([...images, imgSrc]);
             };
             reader.readAsDataURL(file);
         }
     }
 
-    return { canvasRef, initialCanvas, addImageToCanvas, addTextToCanvas, imageInputFileSelected }
+    const dowloadImage = () => {
+        const canvas = canvasRef.current;
+        const image = canvas.toDataURL({ format: 'jpeg', quality: 0.8 }).replace("image/png", "image/octet-stream");
+        const link = document.createElement('a');
+        link.download = 'nazar-propiedades';
+        link.href = image;
+        link.click();
+    }
+
+    return { canvasRef, initialCanvas, addImageToCanvas, addTextToCanvas, imageInputFileSelected, dowloadImage, images }
 
 }

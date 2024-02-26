@@ -4,8 +4,8 @@ import Canvas from './components/Canvas'
 const App = () => {
   return (
     <div>
-      {/* <AddIgTemplate /> */}
-      <Canvas initialImageSrc='./plantilla.png' />
+      <AddIgTemplate />
+      {/* <Canvas initialImageSrc='./plantilla.png' /> */}
     </div>
   )
 }
