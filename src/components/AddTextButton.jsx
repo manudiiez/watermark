@@ -1,3 +1,5 @@
+import styled from "styled-components";
+
 function AddTextButton({ canvasRef }) {
 
     const handleSubmit = (e) => {
@@ -34,44 +36,51 @@ function AddTextButton({ canvasRef }) {
 
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <p>Condicion</p>
-                <input type="text" placeholder="Ej. ALQUILER" name="condition" required />
-            </div>
-            <div>
-                <p>Ubicacion</p>
-                <input type="text" placeholder="Ej. VILLA PALMARES" name="location" required />
-            </div>
-            <div>
-                <p>Departamento</p>
-                <input type="text" placeholder="Ej. Godoy Cruz - Mendoza" name="zone" required />
-            </div>
-            <div className="datos">
+        <Container>
+            <form onSubmit={handleSubmit}>
                 <div>
-                    <p>Superficie</p>
-                    <input type="number" placeholder="Ej. 150" name="surface" required />
+                    <p>Condicion</p>
+                    <input type="text" placeholder="Ej. ALQUILER" name="condition" required />
                 </div>
                 <div>
-                    <p>Cochera</p>
-                    <input type="text" placeholder="Ej. Cochera Doble" name="garage" required />
-                </div>
-            </div>
-            <div className="datos">
-                <div>
-                    <p>Habitaciones</p>
-                    <input type="number" placeholder="Ej. 2" name="bed" required />
+                    <p>Ubicacion</p>
+                    <input type="text" placeholder="Ej. VILLA PALMARES" name="location" required />
                 </div>
                 <div>
-                    <p>Baños</p>
-                    <input type="number" placeholder="Ej. 2" name="bath" required />
+                    <p>Departamento</p>
+                    <input type="text" placeholder="Ej. Godoy Cruz - Mendoza" name="zone" required />
                 </div>
-            </div>
-            <button type="submit">Añadir Texto al Canvas</button>
-
-        </form>
+                <div className="datos">
+                    <div>
+                        <p>Superficie</p>
+                        <input type="number" placeholder="Ej. 150" name="surface" required />
+                    </div>
+                    <div>
+                        <p>Cochera</p>
+                        <input type="text" placeholder="Ej. Cochera Doble" name="garage" required />
+                    </div>
+                </div>
+                <div className="datos">
+                    <div>
+                        <p>Habitaciones</p>
+                        <input type="number" placeholder="Ej. 2" name="bed" required />
+                    </div>
+                    <div>
+                        <p>Baños</p>
+                        <input type="number" placeholder="Ej. 2" name="bath" required />
+                    </div>
+                </div>
+                <button type="submit">Añadir Texto al Canvas</button>
+            </form>
+        </Container>
     );
 }
 {/* <button onClick={() => addTextToCanvas("Hello, world!")}>Añadir Texto al Canvas</button> */ }
 
 export default AddTextButton;
+
+
+const Container = styled.div`
+    
+
+`

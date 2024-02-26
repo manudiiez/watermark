@@ -1,41 +1,23 @@
 import React, { useRef, useEffect } from 'react';
-import { fabric } from 'fabric';
 import DownloadButton from './DownloadButton';
 import AddTextButton from './AddTextButton';
 import ImageUploader from './ImageUploader';
 import styled from 'styled-components';
+import { useCanvas } from '../hooks/useCanvas';
 
 function Canvas({ initialImageSrc }) {
-    const canvasRef = useRef(null);
+    const { canvasRef, initialCanvas, addImageToCanvas, addTextToCanvas } = useCanvas()
     useEffect(() => {
-        // Cargar la imagen recibida en props para establecer el tamaño del canvas
-        fabric.Image.fromURL(initialImageSrc, (img) => {
-            // Asegurarse de que el canvas se ajuste al tamaño de la imagen inicial
-            const canvas = new fabric.Canvas('my-fabric-canvas', {
-                width: img.width,
-                height: img.height,
-            });
-            canvasRef.current = canvas;
-
-            // Colocar la imagen en el canvas
-            img.set({
-                left: 0,
-                top: 0,
-                selectable: false, // Hace la imagen no seleccionable, si se desea
-            });
-            canvas.add(img);
-            canvas.renderAll();
-        });
-        // Limpieza al desmontar el componente
+        initialCanvas('my-fabric-canvas', initialImageSrc)
         return () => canvasRef.current && canvasRef.current.dispose();
     }, [initialImageSrc]);
 
     return (
         <Container>
             <div>
-                <AddTextButton canvasRef={canvasRef} />
+                <AddTextButton addTextToCanvas={addTextToCanvas} />
                 <DownloadButton canvasRef={canvasRef} />
-                <ImageUploader canvasRef={canvasRef} />
+                <ImageUploader addImageToCanvas={addImageToCanvas} />
                 <canvas id="my-fabric-canvas" />
             </div>
 
