@@ -86,9 +86,8 @@ export const useCanvas = () => {
     // }
     const imageInputFileSelected = (e) => {
         const files = e.target.files;
-        console.log(typeof files);
         Array.from(files).map(file => {
-            if (file && file.type.match('image.*')) {
+            if (file && (file.type.match('image.*') || file.name.slice(-4) === 'HEIC')) {
                 const reader = new FileReader();
                 reader.onload = function (evt) {
                     const imgSrc = evt.target.result;
