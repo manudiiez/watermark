@@ -1,11 +1,9 @@
-import AddIgTemplate from "./sections/AddIgTemplate"
-import Canvas from './components/Canvas'
+import TemplateManager from "./components/TemplateManager"
 
 const App = () => {
   return (
     <div>
-      <AddIgTemplate />
-      {/* <Canvas initialImageSrc='./plantilla.png' /> */}
+      <TemplateManager templateImageUrl='./plantilla.png' />
     </div>
   )
 }
