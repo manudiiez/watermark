@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ImageContainer } from './ImageContainer';
 
-export const ImageUploader = ({ setImageUrls, imageUrls, templateImageUrl, textInputs }) => {
+export const ImageUploader = ({ setImageUrls, imageUrls, templateImageUrl }) => {
     const handleFileChange = (event) => {
         const files = event.target.files;
         const urls = Array.from(files).map(file => ({
@@ -11,16 +11,9 @@ export const ImageUploader = ({ setImageUrls, imageUrls, templateImageUrl, textI
         setImageUrls(urls);
     };
 
-    const removeImage = (idToRemove) => {
-        setImageUrls(prevUrls => prevUrls.filter(image => image.id !== idToRemove));
-    };
-
     return (
         <div>
             <input type="file" multiple accept="image/*" onChange={handleFileChange} />
-            {imageUrls.map((image) => (
-                <ImageContainer key={image.id} image={image} templateImageUrl={templateImageUrl} removeImage={removeImage} />
-            ))}
         </div>
     );
 };

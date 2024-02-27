@@ -80,20 +80,21 @@ export const useCanvasProcessor = (templateImageUrl, formStructure) => {
         });
     };
 
-    const handleTextChange = (e) => {
-        const { name, value } = e.target;
-        const newTextInputs = textInputs.map(input => {
-            if (input.name === name) {
-                return { ...input, value: value }
-            }
-            return input
-        })
-        setTextInputs(newTextInputs)
+    const saveForm = (formData, imageUrls) => {
+        setImageUrls(imageUrls)
+        setTextInputs(formData)
+    }
+
+    const removeImage = (idToRemove) => {
+        setImageUrls(prevUrls => prevUrls.filter(image => image.id !== idToRemove));
     };
+
 
     return {
         setImageUrls,
-        handleTextChange,
+        setTextInputs,
+        saveForm,
+        removeImage,
         imageUrls,
         textInputs,
     };
