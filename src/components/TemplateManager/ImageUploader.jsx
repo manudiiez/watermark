@@ -13,6 +13,7 @@ export const ImageUploader = ({ setImageUrls, imageUrls, templateImageUrl }) => 
 
     return (
         <div>
+            <p>Imagenes</p>
             <input type="file" multiple accept="image/*" onChange={handleFileChange} />
         </div>
     );

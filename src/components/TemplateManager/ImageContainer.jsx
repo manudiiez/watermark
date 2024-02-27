@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { IconDownload, IconTrash } from '../Icons';
 
 export const ImageContainer = ({ image, templateImageUrl, removeImage }) => {
     const downloadImage = () => {
@@ -23,8 +24,14 @@ export const ImageContainer = ({ image, templateImageUrl, removeImage }) => {
                 <img src={templateImageUrl} alt="" />
                 <img src={image.url} alt="" className='imageChild' />
             </div>
-            <button onClick={downloadImage}>Descargar Imagen</button>
-            <button onClick={() => removeImage(image.id)}>Eliminar Imagen</button>
+            <div className='controls'>
+                <button onClick={downloadImage}>
+                    <IconDownload />
+                </button>
+                <button onClick={() => removeImage(image.id)}>
+                    <IconTrash />
+                </button>
+            </div>
 
         </Container>
     );
@@ -51,6 +58,27 @@ const Container = styled.div`
         }
         img{
             width: 100%;
+        }
+    }
+    .controls{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        button{
+            height: 40px;
+            border: none;
+            background-color: #347FC4;
+            color: #FFFFFF;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            &:nth-of-type(2){
+                background-color: #BE4436;
+            }
+
+            &:hover{
+                opacity: .8;
+            }
         }
     }
 
