@@ -28,7 +28,7 @@ const Form = ({ formStructure, templateImageUrl, onSubmit }) => {
                 formData.map((inputData, index) => (
                     <div key={index} >
                         <p>{inputData.label}</p>
-                        <input type="text" name={inputData.name} data-x={inputData.x} data-y={inputData.y} data-size={inputData.fontSize} value={inputData.value} onChange={handleTextChange} />
+                        <input type="text" name={inputData.name} data-x={inputData.x} data-y={inputData.y} data-size={inputData.fontSize} value={inputData.value} placeholder={inputData.placeholder} onChange={handleTextChange} />
                     </div>
                 ))
             }

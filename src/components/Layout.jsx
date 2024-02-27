@@ -1,15 +1,13 @@
 import React from 'react'
 import { IconHome, IconIg } from './Icons'
 import styled from 'styled-components'
-import Home from '../sections/Home'
-import img from '../assets/logo.png'
 
 const Layout = ({ children }) => {
     return (
         <Container>
             <header>
                 <div>
-                    <img src={img} alt="" />
+                    <img src='./logo.png' alt="" />
                     <h1>NazarPropiedades</h1>
                 </div>
             </header>
