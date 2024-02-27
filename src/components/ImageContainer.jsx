@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export const ImageContainer = ({ image, templateImageUrl, textInputs, removeImage }) => {
+export const ImageContainer = ({ image, templateImageUrl, removeImage }) => {
     const downloadImage = () => {
         const canvas = document.getElementById(`canvas-${image.id}`);
         const url = canvas.toDataURL('image/jpeg', 0.8);
@@ -14,13 +14,7 @@ export const ImageContainer = ({ image, templateImageUrl, textInputs, removeImag
     };
 
     return (
-        // <Container>
-        //     <div className='canvasContainer'>
-        //         <canvas id={`canvas-${image.id}`} />
-        //     </div>
-        //     <button onClick={downloadImage}>Descargar Imagen</button>
-        //     <button onClick={() => removeImage(image.id)}>Eliminar Imagen</button>
-        // </Container>
+
         <Container>
             <div className='canvasContainer'>
                 <canvas id={`canvas-${image.id}`} />

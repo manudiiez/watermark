@@ -19,7 +19,7 @@ export const ImageUploader = ({ setImageUrls, imageUrls, templateImageUrl, textI
         <div>
             <input type="file" multiple accept="image/*" onChange={handleFileChange} />
             {imageUrls.map((image) => (
-                <ImageContainer key={image.id} image={image} templateImageUrl={templateImageUrl} textInputs={textInputs} removeImage={removeImage} />
+                <ImageContainer key={image.id} image={image} templateImageUrl={templateImageUrl} removeImage={removeImage} />
             ))}
         </div>
     );

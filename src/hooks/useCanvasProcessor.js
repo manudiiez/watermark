@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { fabric } from 'fabric';
 
-export const useCanvasProcessor = (templateImageUrl) => {
+export const useCanvasProcessor = (templateImageUrl, formStructure) => {
     const [imageUrls, setImageUrls] = useState([]);
-    const [textInputs, setTextInputs] = useState({ text1: '', text2: '' });
+    const [textInputs, setTextInputs] = useState(formStructure);
 
     useEffect(() => {
         if (imageUrls.length > 0) {
@@ -34,30 +34,25 @@ export const useCanvasProcessor = (templateImageUrl) => {
                 });
                 canvas.add(template);
                 canvas.moveTo(template, 0);
-
-                // Añadir texto
-                const textOptions1 = {
-                    left: 50,
-                    top: 50,
-                    fontSize: 20,
-                    fill: '#000', // Cambiar según el diseño
-                };
-                const text1 = new fabric.Text(textInputs.text1, textOptions1);
-                canvas.add(text1);
-
-                const textOptions2 = {
-                    left: 50,
-                    top: 100,
-                    fontSize: 20,
-                    fill: '#000', // Cambiar según el diseño
-                };
-                const text2 = new fabric.Text(textInputs.text2, textOptions2);
-                canvas.add(text2);
-
+                textInputs.map(input => {
+                    canvas.add(addTextToCanvas(input.value, input.x, input.y, input.fontSize));
+                })
                 canvas.renderAll();
             });
         });
     };
+
+    const addTextToCanvas = (text, x, y, fontSize) => {
+        const textOptions = {
+            left: x,
+            top: y,
+            fill: 'white',
+            fontFamily: 'Arial',
+            fontSize: fontSize,
+            fontWeight: 'bold',
+        }
+        return text = new fabric.Text(text, textOptions);
+    }
 
 
     const adjustImage = (img, canvas) => {
@@ -85,9 +80,20 @@ export const useCanvasProcessor = (templateImageUrl) => {
         });
     };
 
+    const handleTextChange = (e) => {
+        const { name, value } = e.target;
+        const newTextInputs = textInputs.map(input => {
+            if (input.name === name) {
+                return { ...input, value: value }
+            }
+            return input
+        })
+        setTextInputs(newTextInputs)
+    };
+
     return {
         setImageUrls,
-        setTextInputs,
+        handleTextChange,
         imageUrls,
         textInputs,
     };
