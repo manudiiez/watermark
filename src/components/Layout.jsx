@@ -45,6 +45,7 @@ const Container = styled.div`
     height: 100vh;
 
     header{
+        display: none;
         position: relative;
         z-index: 10;
         grid-column: 1/3;
@@ -68,6 +69,7 @@ const Container = styled.div`
         }
     }
     .sidebar{
+        display: none;
         box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
         position: relative;
         z-index: 9;
@@ -116,8 +118,10 @@ const Container = styled.div`
         padding: 10px;
         position: relative;
         z-index: 8;
-        grid-column: 2/3;
-        grid-row: 2/3;
+        /* grid-column: 2/3;
+        grid-row: 2/3; */
+        grid-column: 1/3;
+        grid-row: 1/3;
         background-color: #E8ECEF;
         overflow-y: scroll;
     }
