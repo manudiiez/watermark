@@ -5,13 +5,12 @@ import styled from 'styled-components'
 const Layout = ({ children }) => {
     return (
         <Container>
-            <header>
-                <div>
-                    <img src='./logo.png' alt="" />
+            <header></header>
+            <div className="sidebar">
+                <div className='brand'>
+                    <img src="./logo.png" alt="" />
                     <h1>NazarPropiedades</h1>
                 </div>
-            </header>
-            <div className='sidebar'>
                 <nav>
                     <ul>
                         <li>
@@ -20,10 +19,22 @@ const Layout = ({ children }) => {
                                 <span>Inicio</span>
                             </a>
                         </li>
+                    </ul>
+                    <div>
+                        <p>APPS & AI</p>
+                        <div></div>
+                    </div>
+                    <ul>
                         <li>
                             <a href="/">
                                 <IconIg />
-                                <span>Inicio</span>
+                                <span>Instagram</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/">
+                                <IconIg />
+                                <span>Instagram</span>
                             </a>
                         </li>
                     </ul>
@@ -39,130 +50,128 @@ const Layout = ({ children }) => {
 export default Layout
 
 const Container = styled.div`
+    position: relative;
+    width: 100%;
     display: grid;
     grid-template-columns: 70px 1fr;
-    grid-template-rows: 70px 1fr;
-    height: 100vh;
-
+    grid-template-rows: 50px 1fr;
     header{
-        display: none;
-        position: relative;
-        z-index: 10;
-        grid-column: 1/3;
-        grid-row: 1/2;
-        background-color: #FFFFFF;
-        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-        padding: 10px;
-        box-sizing: border-box;
-        div{
-            height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50px;
+        z-index: 90;
+        background-color: #F4F5FA;
+        background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    }
+    
+    .sidebar{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 70px;
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+
+        .brand{
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
+            width: 100%;
+            padding: 20px 0;
             >img{
-                width: 50px;
+                width: 30px;
             }
             >h1{
-                font-size: 18px;
-                visibility: hidden;
+                display: none;
             }
         }
-    }
-    .sidebar{
-        display: none;
-        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-        position: relative;
-        z-index: 9;
-        grid-column: 1/2;
-        grid-row: 2/3;
-        background-color: #FFFFFF;
-        border-bottom-right-radius: 50px;
-        nav{
-            padding: 20px 0;
-            ul{
-                list-style: none;
+
+        >nav{
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            >div{
+                width: 100%;
+                padding-left: 20px;
+                >p{
+                    display: none;
+                }
+                >div{
+                    height: 1px;
+                    width: 20px;
+                    background-color: #3a354147;
+                }
+            }
+            >ul{
+                width: 60px;
                 display: flex;
                 flex-direction: column;
-                width: 100%;
+                gap: 6px;
                 li{
                     a{
-                        padding: 20px 0;
-                        display: block;
-                        text-align: center;
-                        text-decoration: none;
-                        border-left: 2px solid #FFFFFF;
+                        padding-left: 20px;
+                        height: 44px;
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                        border-top-right-radius: 100%;
+                        border-bottom-right-radius: 100%;
                         span{
                             display: none;
                         }
-                        svg{
-                            width: 30px;
-                            height: 30px;
-                            color: #b3b7b8;
+
+                        >svg{
+                            width: 26px;
+                            height: 26px;
+                            color: #50565fde;
                         }
-                        
+
                         &:hover{
-                            border-left: 2px solid #BE4436;
-                            svg{
-                                color: #BE4436;
-                            }
-                            span{
-                                color: #BE4436;
-                            }
+                            background-color: rgba(58, 53, 65, 0.04);
                         }
                     }
                 }
             }
         }
     }
-    main{
-        padding: 10px;
-        position: relative;
-        z-index: 8;
-        /* grid-column: 2/3;
-        grid-row: 2/3; */
-        grid-column: 1/3;
-        grid-row: 1/3;
-        background-color: #E8ECEF;
-        overflow-y: scroll;
+
+    >main{
+        width: 100%;
+        grid-row: 2/3;
+        grid-column: 2/3;
+        padding: 14px;
     }
 
-    @media (min-width: 850px) {
-        grid-template-columns: 250px 1fr;
+    @media (min-width: 800px) {
+        grid-template-columns: 260px 1fr;
+        grid-template-rows: 64px 1fr;
         header{
-            padding: 0 30px;
-            div{
-                h1{
-                    visibility: visible;
-                }
-            }
+            height: 64px;
         }
+
         .sidebar{
-
-            nav{
-                ul{
-                    li{
-                        a{
-                            padding: 20px 30px;
-                            display: flex;
-                            align-items: center;
-                            gap: 10px;
-                            span{
-                                display: inline-block;
-                                color: #B3B7B8;
-                                font-size: 16px;
-                                font-weight: 500;
-                            }
-                            svg{
-                                stroke-width: 1px;
-                            }
-                        }
-                    }
+            width: 260px;
+            .brand{
+                justify-content: start;
+                gap: 10px;
+                padding: 20px;
+                >h1{
+                    display: inline-block;
+                    font-size: 16px;
+                    font-weight: 700;
                 }
             }
         }
 
-        main{
-            padding: 20px;
+        >main{
+            padding: 24px;
         }
     }
+
 `
