@@ -39,6 +39,9 @@ export const ImageContainer = ({ image, templateImageUrl, removeImage }) => {
 
 
 const Container = styled.div`
+    border-radius: 6px;
+    box-shadow: 0px 2px 10px 0px #3a354119;
+    overflow: hidden;
     .canvasContainer{
         height: 0;
         width: 0;

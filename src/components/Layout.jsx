@@ -21,6 +21,7 @@ const Layout = ({ children }) => {
                         </li>
                     </ul>
                     <div>
+                        <div></div>
                         <p>APPS & AI</p>
                         <div></div>
                     </div>
@@ -62,11 +63,10 @@ const Container = styled.div`
         width: 100%;
         height: 50px;
         z-index: 90;
-        background-color: #F4F5FA;
-        background: rgba(255, 255, 255, 0.2);
-    border-radius: 16px;
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+        background-color: rgba(244, 245, 250, 0.2);
+        border-radius: 16px;
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
     }
     
     .sidebar{
@@ -89,6 +89,7 @@ const Container = styled.div`
             }
             >h1{
                 display: none;
+                font-size: 700;
             }
         }
 
@@ -101,11 +102,16 @@ const Container = styled.div`
                 padding-left: 20px;
                 >p{
                     display: none;
+                    color: #3a3541b9
                 }
                 >div{
                     height: 1px;
                     width: 20px;
                     background-color: #3a354147;
+
+                    &:nth-of-type(2){
+                        display: none;
+                    }
                 }
             }
             >ul{
@@ -120,8 +126,9 @@ const Container = styled.div`
                         display: flex;
                         align-items: center;
                         gap: 10px;
-                        border-top-right-radius: 100%;
-                        border-bottom-right-radius: 100%;
+                        border-top-right-radius: 50px;
+                        border-bottom-right-radius: 50px;
+                        color: #50565fde;
                         span{
                             display: none;
                         }
@@ -129,7 +136,6 @@ const Container = styled.div`
                         >svg{
                             width: 26px;
                             height: 26px;
-                            color: #50565fde;
                         }
 
                         &:hover{
@@ -146,6 +152,7 @@ const Container = styled.div`
         grid-row: 2/3;
         grid-column: 2/3;
         padding: 14px;
+        overflow-x: hidden;
     }
 
     @media (min-width: 800px) {
@@ -165,6 +172,38 @@ const Container = styled.div`
                     display: inline-block;
                     font-size: 16px;
                     font-weight: 700;
+                }
+            }
+
+            >nav{
+                >div{
+                    display: grid;
+                    grid-template-columns: 20px auto 1fr;
+                    align-items: center;
+                    gap: 10px;
+                    width: 240px;
+                    p{
+                        display: inline-block;
+                    }
+                    >div{
+                        width: 100%;
+                        &:nth-of-type(2){
+                            display: inline-block;
+                        }
+                    }
+                }
+
+                >ul{
+                    width: 240px;
+                    li{
+                        a{
+                            text-decoration: none;
+                            span{
+                                display: inline-block;
+                                font-size: 16px;
+                            }
+                        }
+                    }
                 }
             }
         }

@@ -4,11 +4,11 @@ import Form from './Form';
 import { ImageContainer } from './ImageContainer';
 import styled from 'styled-components';
 
-const TemplateManager = ({ templateImageUrl, formStructure }) => {
-    const { setTextInputs, saveForm, removeImage, textInputs, imageUrls } = useCanvasProcessor(templateImageUrl, formStructure);
+const TemplateManager = ({ templateImageUrl, data }) => {
+    const { setTextInputs, saveForm, removeImage, textInputs, imageUrls } = useCanvasProcessor(templateImageUrl, data?.form_structure);
     return (
         <Container>
-            <Form formStructure={textInputs} setTextInputs={setTextInputs} templateImageUrl={templateImageUrl} onSubmit={saveForm} />
+            <Form formStructure={textInputs} title={data.title} setTextInputs={setTextInputs} templateImageUrl={templateImageUrl} onSubmit={saveForm} />
             <div className='imagesContainer'>
                 {imageUrls.map((image) => (
                     <ImageContainer key={image.id} image={image} templateImageUrl={templateImageUrl} removeImage={removeImage} />
@@ -25,6 +25,8 @@ display: flex;
 flex-direction: column;
 gap: 30px;
 .imagesContainer{
+    width: 100%;
+    height: fit-content;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
