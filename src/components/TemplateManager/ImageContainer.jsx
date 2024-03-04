@@ -39,9 +39,6 @@ export const ImageContainer = ({ image, templateImageUrl, removeImage }) => {
 
 
 const Container = styled.div`
-    border-radius: 6px;
-    box-shadow: 0px 2px 10px 0px #3a354119;
-    overflow: hidden;
     .canvasContainer{
         height: 0;
         width: 0;
@@ -50,17 +47,19 @@ const Container = styled.div`
     .image{
         position: relative;
         width: fit-content;
+        img{
+            position: relative;
+            width: 100%;
+            z-index: 20;
+        }
         .imageChild{
             position: absolute;
             top: 0;
             left: 0;
-            z-index: -1;
+            z-index: 10;
             width: 100%;
             height: calc(100% - 4px);
             object-fit: cover;
-        }
-        img{
-            width: 100%;
         }
     }
     .controls{
