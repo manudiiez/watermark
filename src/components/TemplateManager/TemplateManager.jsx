@@ -1,30 +1,15 @@
 import React from 'react';
 import { useCanvasProcessor } from '../../hooks/useCanvasProcessor';
 import Form from './Form';
-import { ImageContainer } from './ImageContainer';
 import styled from 'styled-components';
+import ImagesListSelected from './ImagesListSelected';
 
-const TemplateManager = ({ templateImageUrl, data }) => {
+const TemplateManager = ({ templateImageUrl, data, type }) => {
     const { setTextInputs, saveForm, removeImage, textInputs, imageUrls } = useCanvasProcessor(templateImageUrl, data?.form_structure);
     return (
         <Container>
             <Form formStructure={textInputs} title={data.title} setTextInputs={setTextInputs} templateImageUrl={templateImageUrl} onSubmit={saveForm} />
-            <div className='imagesContainer'>
-                <div className='title'>
-                    IMAGENES SELECCIONADAS
-                </div>
-                {
-                    imageUrls.length === 0 ? (
-                        <p>no hay imagenes seleccionadas</p>
-                    ) : (
-                        <div className="content">
-                            {imageUrls.map((image) => (
-                                <ImageContainer key={image.id} image={image} templateImageUrl={templateImageUrl} removeImage={removeImage} />
-                            ))}
-                        </div>
-                    )
-                }
-            </div>
+            <ImagesListSelected imageUrls={imageUrls} templateImageUrl={templateImageUrl} removeImage={removeImage} />
         </Container>
     );
 };

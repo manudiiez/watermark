@@ -1,5 +1,5 @@
 import React from 'react'
-import { IconHome, IconIg } from './Icons'
+import { IconFluid, IconHome, IconIg } from './Icons'
 import styled from 'styled-components'
 
 const Layout = ({ children }) => {
@@ -29,13 +29,13 @@ const Layout = ({ children }) => {
                         <li>
                             <a href="/">
                                 <IconIg />
-                                <span>Instagram</span>
+                                <span>Plantilla Instagram</span>
                             </a>
                         </li>
                         <li>
                             <a href="/">
-                                <IconIg />
-                                <span>Instagram</span>
+                                <IconFluid />
+                                <span>Marca de agua</span>
                             </a>
                         </li>
                     </ul>
