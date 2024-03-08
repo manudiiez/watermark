@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { ImageUploader } from './ImageUploader';
 import styled from 'styled-components';
 
-const Form = ({ formStructure, title, templateImageUrl, onSubmit }) => {
+const Form = ({ formStructure, title, onSubmit }) => {
     const [formData, setFormData] = useState(formStructure);
     const [imageUrls, setImageUrls] = useState([]);
 
@@ -27,6 +27,7 @@ const Form = ({ formStructure, title, templateImageUrl, onSubmit }) => {
             <div className="title">
                 <h2>{title}</h2>
             </div>
+
             <div className='inputs'>
                 {
                     formData.map((inputData, index) => (
@@ -107,6 +108,10 @@ const Container = styled.form`
             border: none;
             color: #323438de;
             font-weight: 600;
+            cursor: pointer;
+            &:hover{
+                background-color: #3a354119;
+            }
         }
     }
 

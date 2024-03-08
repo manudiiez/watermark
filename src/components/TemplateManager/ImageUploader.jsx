@@ -20,7 +20,7 @@ export const ImageUploader = ({ setImageUrls, imageUrls }) => {
     return (
         <Container>
             <input type="file" multiple accept="image/*" onChange={handleFileChange} ref={inputRef} style={{ display: 'none' }} />
-            <div onClick={handleClick} style={{ cursor: 'pointer' }}>
+            <div className='input' onClick={handleClick}>
                 Seleccionar imagenes
             </div>
             <div>
@@ -51,7 +51,12 @@ const Container = styled.div`
         &:nth-of-type(2){
             background-color: #F4F5FA;
         }
-
+    }
+    .input{
+        cursor: pointer;
+        &:hover{
+            background-color: #3a354119;
+        }
     }
     @media (min-width: 800px){
         padding: 0 24px;

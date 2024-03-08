@@ -1,10 +1,12 @@
 import Layout from "./components/Layout"
 import InstagramTemplate from "./sections/InstagramTemplate"
+import Watermark from "./sections/Watermark"
 
 const App = () => {
   return (
     <Layout>
-      <InstagramTemplate />
+      <Watermark />
+      {/* <InstagramTemplate /> */}
     </Layout>
   )
 }

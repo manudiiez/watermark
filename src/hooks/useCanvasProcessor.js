@@ -1,18 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { fabric } from 'fabric';
 
-export const useCanvasProcessor = (templateImageUrl, formStructure) => {
+export const useCanvasProcessor = (templateImageUrl, formStructure, type) => {
     const [imageUrls, setImageUrls] = useState([]);
     const [textInputs, setTextInputs] = useState(formStructure);
 
-    useEffect(() => {
-        if (imageUrls.length > 0) {
-            imageUrls.forEach((imageUrl) => {
-                processImage(imageUrl, textInputs, templateImageUrl);
-            });
-        }
-    }, [imageUrls, textInputs, templateImageUrl]);
-
+    //TYPE PROCESSOR
     const processImage = (imageUrl, textInputs, templateImageUrl) => {
         fabric.Image.fromURL(templateImageUrl, (template) => {
             const canvas = new fabric.Canvas(`canvas-${imageUrl.id}`, {
@@ -22,6 +15,8 @@ export const useCanvasProcessor = (templateImageUrl, formStructure) => {
 
             // Agregar imagen de fondo
             fabric.Image.fromURL(imageUrl.url, (bgImg) => {
+
+
                 adjustImage(bgImg, canvas);
                 canvas.setBackgroundImage(bgImg, canvas.renderAll.bind(canvas));
 
@@ -34,9 +29,11 @@ export const useCanvasProcessor = (templateImageUrl, formStructure) => {
                 });
                 canvas.add(template);
                 canvas.moveTo(template, 0);
-                textInputs.map(input => {
-                    canvas.add(addTextToCanvas(input.value, input.x, input.y, input.fontSize));
-                })
+                if (textInputs.length > 0) {
+                    textInputs.map(input => {
+                        canvas.add(addTextToCanvas(input.value, input.x, input.y, input.fontSize));
+                    })
+                }
                 canvas.renderAll();
             });
         });
@@ -83,6 +80,9 @@ export const useCanvasProcessor = (templateImageUrl, formStructure) => {
     const saveForm = (formData, imageUrls) => {
         setImageUrls(imageUrls)
         setTextInputs(formData)
+        imageUrls.forEach((imageUrl) => {
+            processImage(imageUrl, formData, templateImageUrl);
+        });
     }
 
     const removeImage = (idToRemove) => {
