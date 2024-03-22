@@ -5,8 +5,45 @@ export const useCanvasProcessor = (templateImageUrl, formStructure, type) => {
     const [imageUrls, setImageUrls] = useState([]);
     const [textInputs, setTextInputs] = useState(formStructure);
 
-    //TYPE PROCESSOR
-    const processImage = (imageUrl, textInputs, templateImageUrl) => {
+    const watermarkProcessor = (imageUrl, textInputs, templateImageUrl) => {
+        fabric.Image.fromURL(templateImageUrl, (template) => {
+            // Agregar imagen de fondo
+            fabric.Image.fromURL(imageUrl.url, (bgImg) => {
+
+                let size = 0
+                let opacity = 0
+
+                const canvas = new fabric.Canvas(`canvas-${imageUrl.id}`, {
+                    width: bgImg.width,
+                    height: bgImg.height,
+                });
+
+                if (textInputs.length > 0) {
+                    textInputs.map(input => {
+                       size = input.name === 'size' ? input.value : size
+                       opacity = input.name === 'opacity' ? input.value : opacity
+                    })
+                }
+
+                canvas.setBackgroundImage(bgImg, canvas.renderAll.bind(canvas));
+                // Agregar imagen de plantilla
+                template.scaleToWidth(size); // Ajustar al ancho deseado
+                template.scaleToHeight(size)
+                template.set({
+                    opacity: opacity/100
+                })
+                canvas.add(template);
+                template.center()
+                // Esto asegura que la imagen se mantenga en el centro incluso cuando el canvas cambie de tamaño o se redibuje
+                template.setCoords();
+                canvas.moveTo(template, 0);
+               
+                canvas.renderAll();
+            });
+        });
+    }
+
+    const templateProcessor = (imageUrl, textInputs, templateImageUrl) => {
         fabric.Image.fromURL(templateImageUrl, (template) => {
             const canvas = new fabric.Canvas(`canvas-${imageUrl.id}`, {
                 width: template.width,
@@ -37,6 +74,16 @@ export const useCanvasProcessor = (templateImageUrl, formStructure, type) => {
                 canvas.renderAll();
             });
         });
+    }
+
+    //TYPE PROCESSOR
+    const processImage = (imageUrl, textInputs, templateImageUrl) => {
+
+        if(type !== 'watermark'){
+            templateProcessor(imageUrl, textInputs, templateImageUrl)
+        }else{
+            watermarkProcessor(imageUrl, textInputs, templateImageUrl)
+        }
     };
 
     const addTextToCanvas = (text, x, y, fontSize) => {
