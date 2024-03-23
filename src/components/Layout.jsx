@@ -1,6 +1,7 @@
 import React from 'react'
 import { IconFluid, IconHome, IconIg } from './Icons'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 const Layout = ({ children }) => {
     return (
@@ -14,10 +15,10 @@ const Layout = ({ children }) => {
                 <nav>
                     <ul>
                         <li>
-                            <a href="/">
+                            <Link to="/">
                                 <IconHome />
                                 <span>Inicio</span>
-                            </a>
+                            </Link>
                         </li>
                     </ul>
                     <div>
@@ -27,16 +28,16 @@ const Layout = ({ children }) => {
                     </div>
                     <ul>
                         <li>
-                            <a href="/">
+                            <Link to="/">
                                 <IconIg />
                                 <span>Plantilla Instagram</span>
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a href="/">
+                            <Link to="/watermark">
                                 <IconFluid />
                                 <span>Marca de agua</span>
-                            </a>
+                            </Link>
                         </li>
                     </ul>
                 </nav>
