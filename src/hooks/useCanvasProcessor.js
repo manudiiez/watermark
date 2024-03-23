@@ -7,7 +7,6 @@ export const useCanvasProcessor = (templateImageUrl, formStructure, type) => {
 
     const watermarkProcessor = (imageUrl, textInputs, templateImageUrl) => {
         fabric.Image.fromURL(templateImageUrl, (template) => {
-            // Agregar imagen de fondo
             fabric.Image.fromURL(imageUrl.url, (bgImg) => {
 
                 let size = 0
@@ -26,7 +25,6 @@ export const useCanvasProcessor = (templateImageUrl, formStructure, type) => {
                 }
 
                 canvas.setBackgroundImage(bgImg, canvas.renderAll.bind(canvas));
-                // Agregar imagen de plantilla
                 template.scaleToWidth(size); // Ajustar al ancho deseado
                 template.scaleToHeight(size)
                 template.set({
@@ -34,7 +32,6 @@ export const useCanvasProcessor = (templateImageUrl, formStructure, type) => {
                 })
                 canvas.add(template);
                 template.center()
-                // Esto asegura que la imagen se mantenga en el centro incluso cuando el canvas cambie de tamaño o se redibuje
                 template.setCoords();
                 canvas.moveTo(template, 0);
                
