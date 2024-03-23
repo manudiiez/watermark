@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { ImageContainer } from './ImageContainer'
 
-const ImagesListSelected = ({ imageUrls, templateImageUrl, removeImage }) => {
+const ImagesListSelected = ({ imageUrls, templateImageUrl, removeImage, type }) => {
     return (
         <Container className='imagesContainer'>
             <div className='title'>
@@ -14,7 +14,7 @@ const ImagesListSelected = ({ imageUrls, templateImageUrl, removeImage }) => {
                 ) : (
                     <div className="content">
                         {imageUrls.map((image) => (
-                            <ImageContainer key={image.id} image={image} templateImageUrl={templateImageUrl} removeImage={removeImage} />
+                            <ImageContainer key={image.id} image={image} templateImageUrl={templateImageUrl} removeImage={removeImage} type={type}/>
                         ))}
                     </div>
                 )

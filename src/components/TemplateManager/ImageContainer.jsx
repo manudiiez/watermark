@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { IconDownload, IconTrash } from '../Icons';
 
-export const ImageContainer = ({ image, templateImageUrl, removeImage }) => {
+export const ImageContainer = ({ image, templateImageUrl, removeImage, type }) => {
     const downloadImage = () => {
         const canvas = document.getElementById(`canvas-${image.id}`);
         const url = canvas.toDataURL('image/jpeg', 0.8);
@@ -21,7 +21,8 @@ export const ImageContainer = ({ image, templateImageUrl, removeImage }) => {
                 <canvas id={`canvas-${image.id}`} />
             </div>
             <div className='image'>
-                <img src={templateImageUrl} alt="" />
+               
+                <img src={templateImageUrl} alt="" style={{opacity: type === 'watermark' ? .5 : 1}} />
                 <img src={image.url} alt="" className='imageChild' />
             </div>
             <div className='controls'>

@@ -10,7 +10,7 @@ const TemplateManager = ({ templateImageUrl, data, type }) => {
     return (
         <Container>
             <Form formStructure={textInputs} title={data.title} setTextInputs={setTextInputs} onSubmit={saveForm} />
-            <ImagesListSelected imageUrls={imageUrls} templateImageUrl={templateImageUrl} removeImage={removeImage} />
+            <ImagesListSelected imageUrls={imageUrls} templateImageUrl={templateImageUrl} removeImage={removeImage} type={type} />
         </Container>
     );
 };
