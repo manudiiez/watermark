@@ -11,7 +11,7 @@ const data = {
 
 const Watermark = () => {
     return (
-        <TemplateManager templateImageUrl='./logo.png' data={data} type="watermark" />
+        <TemplateManager templateImageUrl='./watermark.png' data={data} type="watermark" />
     )
 }
 
