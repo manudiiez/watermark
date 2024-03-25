@@ -25,7 +25,6 @@ export const useCanvasProcessor = (templateImageUrl, formStructure, type) => {
                 }
 
                 canvas.setBackgroundImage(bgImg, canvas.renderAll.bind(canvas));
-                template.scaleToWidth(size); // Ajustar al ancho deseado
                 template.scaleToHeight(size)
                 template.set({
                     opacity: opacity/100
