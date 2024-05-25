@@ -6,7 +6,8 @@ const data = {
         { value: '', name: 'condition', x: 71, y: 865, fontSize: 39, label: 'Condición', placeholder: 'ALQUILER', type: 'text' },
         { value: '', name: 'location', x: 71, y: 910, fontSize: 33, label: 'Ubicación', placeholder: 'VILLA PALMARES', type: 'text' },
         { value: '', name: 'zone', x: 71, y: 945, fontSize: 35, label: 'Departamento', placeholder: 'Godoy Cruz - Mendoza', type: 'text' },
-        { value: '', name: 'surface', x: 921, y: 800, fontSize: 23, label: 'Superficie', placeholder: '150', type: 'text' },
+        { value: '', name: 'totalSurface', x: 921, y: 720, fontSize: 23, label: 'Superficie total', placeholder: '200', type: 'text' },
+        { value: '', name: 'surface', x: 921, y: 800, fontSize: 23, label: 'Superficie cubierta', placeholder: '150', type: 'text' },
         { value: '', name: 'garage', x: 921, y: 865, fontSize: 22, label: 'Cochera', placeholder: 'Cochera', type: 'text' },
         { value: '', name: 'garage2', x: 921, y: 890, fontSize: 22, label: 'Cochera+', placeholder: 'Doble', type: 'text' },
         // {value: '', name: 'garage', x: 921, y: 890, fontSize: 22},
@@ -18,7 +19,7 @@ const data = {
 
 const InstagramTemplate = () => {
     return (
-        <TemplateManager templateImageUrl='./plantilla.png' data={data} />
+        <TemplateManager templateImageUrl='./plantilla2.png' data={data} />
     )
 }
 
