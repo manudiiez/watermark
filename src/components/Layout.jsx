@@ -34,6 +34,12 @@ const Layout = ({ children }) => {
                             </Link>
                         </li>
                         <li>
+                            <Link to="/oficina">
+                                <IconIg />
+                                <span>Plantilla Oficinas</span>
+                            </Link>
+                        </li>
+                        <li>
                             <Link to="/watermark">
                                 <IconFluid />
                                 <span>Marca de agua</span>

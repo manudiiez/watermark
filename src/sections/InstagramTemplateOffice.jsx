@@ -1,0 +1,26 @@
+import TemplateManager from "../components/TemplateManager/TemplateManager"
+
+const data = {
+    title: "PUBLICACIONES INSTAGRAM OFICINAS",
+    form_structure: [
+        { value: '', name: 'condition', x: 71, y: 865, fontSize: 39, label: 'Condición', placeholder: 'ALQUILER', type: 'text' },
+        { value: '', name: 'location', x: 71, y: 910, fontSize: 33, label: 'Ubicación', placeholder: 'VILLA PALMARES', type: 'text' },
+        { value: '', name: 'zone', x: 71, y: 945, fontSize: 35, label: 'Departamento', placeholder: 'Godoy Cruz - Mendoza', type: 'text' },
+        { value: '', name: 'totalSurface', x: 921, y: 720, fontSize: 23, label: 'Superficie total', placeholder: '200', type: 'text' },
+        { value: '', name: 'surface', x: 921, y: 800, fontSize: 23, label: 'Superficie cubierta', placeholder: '150', type: 'text' },
+        { value: '', name: 'garage', x: 921, y: 865, fontSize: 22, label: 'Cochera', placeholder: 'Cochera', type: 'text' },
+        { value: '', name: 'garage2', x: 921, y: 890, fontSize: 22, label: 'Cochera+', placeholder: 'Doble', type: 'text' },
+        // {value: '', name: 'garage', x: 921, y: 890, fontSize: 22},
+        { value: '', name: 'bed', x: 921, y: 950, fontSize: 22, label: 'Oficinas', placeholder: '3', type: 'number' },
+        { value: '', name: 'bath', x: 921, y: 1025, fontSize: 22, label: 'Baños', placeholder: '2', type: 'number' },
+    ]
+}
+
+
+const InstagramTemplateOffice = () => {
+    return (
+        <TemplateManager templateImageUrl='./plantilla_office.png' data={data} />
+    )
+}
+
+export default InstagramTemplateOffice
