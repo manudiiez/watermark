@@ -2,7 +2,7 @@ import { BrowserRouter, Route, RouterProvider, Routes, createBrowserRouter } fro
 import Layout from "./components/Layout"
 import InstagramTemplate from "./sections/InstagramTemplate"
 import Watermark from "./sections/Watermark"
-import InstagramTemplateOffice from "./sections/InstagramTemplateOfFice";
+import InstagramTemplateOffice from "./sections/InstagramTemplateOffice";
 
 const App = () => {
   return (
